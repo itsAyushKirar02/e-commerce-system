@@ -65,11 +65,11 @@ public class OrderController {
     // 5. Add a single Order Item to an existing order
     @PostMapping("/{id}/items")
     public OrderItem addOrderItem(@PathVariable Integer id, @RequestBody OrderItem item) {
-        item.setOrderId(id); // Link item to the order
+        item.setOrderId(id);  
         return itemRepo.save(item);
     }
     
- // 6. Update an Order Item (Scenario 3)
+ // 6. Update an Order Item 
     @PutMapping("/{orderId}/items/{itemId}")
     public ResponseEntity<OrderItem> updateOrderItem(
             @PathVariable Integer orderId,
@@ -83,7 +83,7 @@ public class OrderController {
         }).orElse(ResponseEntity.notFound().build());
     }
 
-    // 7. Delete an Order Item (Scenario 5)
+    // 7. Delete an Order Item 
     @DeleteMapping("/{orderId}/items/{itemId}")
     public ResponseEntity<?> deleteOrderItem(
             @PathVariable Integer orderId,
